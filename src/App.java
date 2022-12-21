@@ -39,6 +39,8 @@ public class App extends JFrame implements ActionListener {
         app.setDefaultCloseOperation(EXIT_ON_CLOSE);
         app.setVisible(true);
         app.setLocationRelativeTo(null);
+        app.taPersons.setEditable(false);
+
 
         String name = app.tfName.getText();;
         int age;
