@@ -73,7 +73,6 @@ public class App extends JFrame implements ActionListener {
                     app.taPersons.setText(String.valueOf(age));
                     app.taPersons.setText(String.valueOf(months_worked));
                     app.taPersons.setText(String.valueOf(salary));
-
             }
         });
 
@@ -86,7 +85,6 @@ public class App extends JFrame implements ActionListener {
                 app.tfMonths.setText("");
                 app.tfSalary.setText("");
                 app.tfLoad.setText("");
-
             }
         });
 
