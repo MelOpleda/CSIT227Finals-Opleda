@@ -40,20 +40,25 @@ public class App extends JFrame implements ActionListener {
         app.setVisible(true);
         app.setLocationRelativeTo(null);
 
+        String name = app.tfName.getText();;
+        int age;
+        double months_worked;
+        double salary;
 
-        String name = app.tfName.getText();
-        int age = Integer.parseInt(app.tfAge.getText());
-        double months_worked = Double.parseDouble(app.tfMonths.getText());
-        double salary = Double.parseDouble(app.tfSalary.getText());
+        try {
+            age = Integer.parseInt(app.tfAge.getText());
+            months_worked = Double.parseDouble(app.tfMonths.getText());
+            salary = Double.parseDouble(app.tfSalary.getText());
 
-        if (app.rbCustomer.isSelected()){
-
-            app.tfMonths.setEditable(false);
-            app.tfSalary.setEditable(false);
-
+        } catch (NumberFormatException numberFormatException) {
+            return;
         }
 
-        if (app.rbClerk.isSelected()){
+        if (app.rbCustomer.isSelected()){
+            app.tfMonths.setEditable(false);
+            app.tfSalary.setEditable(false);
+        }
+        else if (app.rbClerk.isSelected()){
             app.tfName.setText("(" + name + ")");
             app.tfName.setText("(" + age + ")");
         }
@@ -62,8 +67,6 @@ public class App extends JFrame implements ActionListener {
         app.btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
                     app.taPersons.setText(String.valueOf(name));
                     app.taPersons.setText(String.valueOf(age));
                     app.taPersons.setText(String.valueOf(months_worked));
