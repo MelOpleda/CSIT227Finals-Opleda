@@ -1,8 +1,9 @@
 import javax.swing.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class App extends JFrame{
+public class App extends JFrame implements ActionListener {
     private JPanel pnlMain;
     private JRadioButton rbCustomer;
     private JRadioButton rbClerk;
@@ -26,6 +27,7 @@ public class App extends JFrame{
     public App() {
         persons = new ArrayList<>();
         // TODO add implementations for all milestones here
+
     }
 
     public static void main(String[] args) {
@@ -37,9 +39,65 @@ public class App extends JFrame{
         app.setDefaultCloseOperation(EXIT_ON_CLOSE);
         app.setVisible(true);
         app.setLocationRelativeTo(null);
+
+
+        String name = app.tfName.getText();
+        int age = Integer.parseInt(app.tfAge.getText());
+        double months_worked = Double.parseDouble(app.tfMonths.getText());
+        double salary = Double.parseDouble(app.tfSalary.getText());
+
+        if (app.rbCustomer.isSelected()){
+
+            app.tfMonths.setEditable(false);
+            app.tfSalary.setEditable(false);
+
+        }
+
+        if (app.rbClerk.isSelected()){
+            app.tfName.setText("(" + name + ")");
+            app.tfName.setText("(" + age + ")");
+        }
+
+
+        app.btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                    app.taPersons.setText(String.valueOf(name));
+                    app.taPersons.setText(String.valueOf(age));
+                    app.taPersons.setText(String.valueOf(months_worked));
+                    app.taPersons.setText(String.valueOf(salary));
+
+            }
+        });
+
+        app.btnClear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                app.tfName.setText("");
+                app.tfAge.setText("");
+                app.tfMonths.setText("");
+                app.tfSalary.setText("");
+                app.tfLoad.setText("");
+
+            }
+        });
+
+
+
+
+
+
     }
 
     static void giveReward(int n) {
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
     }
 }
