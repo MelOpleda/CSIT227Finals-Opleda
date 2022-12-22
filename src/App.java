@@ -173,6 +173,13 @@ public class App extends JFrame implements ActionListener {
                 }
             }
         });
+
+        btnReward.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                giveReward();
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -188,7 +195,35 @@ public class App extends JFrame implements ActionListener {
     }
 
      public void giveReward() {
+         int age = 0;
+         int months_worked = 0;
+         double salary = 0;
+         String name = String.valueOf(tfName.getText());
 
+         if(tfMonths.getText().equals("") || tfSalary.getText().equals("")){
+             JOptionPane.showMessageDialog(null, "Empty Text Field(s)", "Invalid TextFields", JOptionPane.ERROR_MESSAGE);
+             return;
+         }
+         try{
+             age = Integer.parseInt(tfAge.getText());
+             months_worked = Integer.parseInt(tfMonths.getText());
+             salary = Double.parseDouble(tfSalary.getText());
+
+         } catch (NumberFormatException numberFormatException){
+             JOptionPane.showMessageDialog(null, "Invalid Input","Invalid Input", JOptionPane.ERROR_MESSAGE);
+             return;
+         }
+
+         if(rbCustomer.isSelected()){
+             JOptionPane.showMessageDialog(null, "This Person isn't an Employee", "Sorry", JOptionPane.ERROR_MESSAGE);
+             return;
+         }
+
+         double result;
+         for (Person c : persons) {
+             result = (c.getSalary() * c.getMonths()) / 12;
+             JOptionPane.showMessageDialog(null,String.format("%.2f",result),"Thirteenth Month Pay", JOptionPane.INFORMATION_MESSAGE);
+         }
     }
 
     @Override
