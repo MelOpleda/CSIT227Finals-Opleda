@@ -96,6 +96,19 @@ public class App extends JFrame implements ActionListener {
                 taPersons.append(String.valueOf( name + " (" + age + ")"));
             }
         });
+
+        btnClear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                tfName.setText("");
+                tfAge.setText("");
+                tfMonths.setText("");
+                tfSalary.setText("");
+                tfLoad.setText("");
+                taPersons.setText("");
+            }
+        });
     }
 
     public static void main(String[] args) {
