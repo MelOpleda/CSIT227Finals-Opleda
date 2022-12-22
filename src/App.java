@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class App extends JFrame implements ActionListener {
     private JPanel pnlMain;
@@ -41,7 +43,6 @@ public class App extends JFrame implements ActionListener {
         app.setDefaultCloseOperation(EXIT_ON_CLOSE);
         app.setVisible(true);
         app.setLocationRelativeTo(null);
-
     }
 
      public void giveReward() {
