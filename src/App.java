@@ -109,6 +109,43 @@ public class App extends JFrame implements ActionListener {
                 taPersons.setText("");
             }
         });
+
+        btnLoad.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    int n = Integer.parseInt(tfLoad.getText());
+
+                    if (rbCustomer.isSelected()) {
+                        Person.Customer cus = (Person.Customer) persons.get(n - 1);
+                        tfName.setText(persons.get(n - 1).getName());
+                        tfAge.setText(String.valueOf(persons.get(n - 1).getAge()));
+                    }
+                    else if (rbClerk.isSelected()) {
+                        Person.Employee.Clerk c = (Person.Employee.Clerk) persons.get(n - 1);
+                        tfName.setText(persons.get(n - 1).getName());
+                        tfAge.setText(String.valueOf(persons.get(n - 1).getAge()));
+                        tfMonths.setText(String.valueOf(persons.get(n - 1).getMonths()));
+                        tfSalary.setText(String.valueOf(persons.get(n - 1).getSalary()));
+                    }
+                    else if (rbManager.isSelected()) {
+                        Person.Employee.Manager m = (Person.Employee.Manager) persons.get(n - 1);
+                        tfName.setText(persons.get(n - 1).getName());
+                        tfAge.setText(String.valueOf(persons.get(n - 1).getAge()));
+                        tfMonths.setText(String.valueOf(persons.get(n - 1).getMonths()));
+                        tfSalary.setText(String.valueOf(persons.get(n - 1).getSalary()));
+                    }
+
+                } catch (ClassCastException c) {
+                    JOptionPane.showMessageDialog(null, "Something went wrong.");
+                } catch (NumberFormatException n) {
+                    JOptionPane.showMessageDialog(null, "Input Invalid.");
+                } catch (IndexOutOfBoundsException i) {
+                    JOptionPane.showMessageDialog(null, "Data does not exist.");
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
