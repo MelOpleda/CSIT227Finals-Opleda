@@ -24,9 +24,11 @@ public class App extends JFrame implements ActionListener {
 
     private List<Person> persons;
 
+
     public App() {
         persons = new ArrayList<>();
         // TODO add implementations for all milestones here
+
 
     }
 
@@ -39,63 +41,10 @@ public class App extends JFrame implements ActionListener {
         app.setDefaultCloseOperation(EXIT_ON_CLOSE);
         app.setVisible(true);
         app.setLocationRelativeTo(null);
-        app.taPersons.setEditable(false);
-
-
-        String name = app.tfName.getText();;
-        int age;
-        double months_worked;
-        double salary;
-
-        try {
-            age = Integer.parseInt(app.tfAge.getText());
-            months_worked = Double.parseDouble(app.tfMonths.getText());
-            salary = Double.parseDouble(app.tfSalary.getText());
-
-        } catch (NumberFormatException numberFormatException) {
-            return;
-        }
-
-        if (app.rbCustomer.isSelected()){
-            app.tfMonths.setEditable(false);
-            app.tfSalary.setEditable(false);
-        }
-        else if (app.rbClerk.isSelected()){
-            app.tfName.setText("(" + name + ")");
-            app.tfName.setText("(" + age + ")");
-        }
-
-
-        app.btnSave.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                    app.taPersons.setText(String.valueOf(name));
-                    app.taPersons.setText(String.valueOf(age));
-                    app.taPersons.setText(String.valueOf(months_worked));
-                    app.taPersons.setText(String.valueOf(salary));
-            }
-        });
-
-        app.btnClear.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                app.tfName.setText("");
-                app.tfAge.setText("");
-                app.tfMonths.setText("");
-                app.tfSalary.setText("");
-                app.tfLoad.setText("");
-            }
-        });
-
-
-
-
-
 
     }
 
-    static void giveReward(int n) {
+     public void giveReward() {
 
     }
 
