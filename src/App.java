@@ -203,6 +203,29 @@ public class App extends JFrame implements ActionListener {
                 tfSalary.setEditable(true);
             }
         });
+
+        btnSavePerson.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = String.valueOf(tfName.getText());
+                int age = Integer.parseInt(tfAge.getText());
+
+                if(rbCustomer.isSelected()){
+                    persons.add(new Person.Customer(name,age));
+                }
+
+                else if(rbClerk.isSelected()){
+                    int months_worked = Integer.parseInt(tfMonths.getText());
+                    double salary = Double.parseDouble(tfSalary.getText());
+                    persons.add(new Person.Employee.Clerk(name,age,months_worked,salary));
+                }
+                else if(rbManager.isSelected()){
+                    int months_worked = Integer.parseInt(tfMonths.getText());
+                    double salary = Double.parseDouble(tfSalary.getText());
+                    persons.add(new Person.Employee.Manager(name,age,months_worked,salary));
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
