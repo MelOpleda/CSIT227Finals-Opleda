@@ -146,6 +146,33 @@ public class App extends JFrame implements ActionListener {
                 }
             }
         });
+
+        btnSayHi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(rbCustomer.isSelected()){
+                    for (Person cus : persons) {
+                        if (cus instanceof Person.Customer) {
+                            System.out.println(cus.toString());
+                        }
+                    }
+                }
+                if(rbClerk.isSelected()){
+                    for (Person c : persons) {
+                        if (c instanceof Person.Employee.Clerk) {
+                            System.out.println(c.toString());
+                        }
+                    }
+                }
+                if(rbManager.isSelected()){
+                    for (Person m : persons) {
+                        if (m instanceof Person.Employee.Manager) {
+                            System.out.println(m.toString());
+                        }
+                    }
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
