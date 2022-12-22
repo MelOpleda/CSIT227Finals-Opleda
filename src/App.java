@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class App extends JFrame implements ActionListener {
     private JPanel pnlMain;
@@ -178,6 +180,27 @@ public class App extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 giveReward();
+            }
+        });
+        rbCustomer.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                tfMonths.setEditable(false);
+                tfSalary.setEditable(false);
+            }
+        });
+        rbClerk.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                tfMonths.setEditable(true);
+                tfSalary.setEditable(true);
+            }
+        });
+        rbManager.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                tfMonths.setEditable(true);
+                tfSalary.setEditable(true);
             }
         });
     }
