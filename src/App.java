@@ -226,6 +226,42 @@ public class App extends JFrame implements ActionListener {
                 }
             }
         });
+
+        btnLoadPerson.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    int n = Integer.parseInt(tfLoad.getText());
+
+                    if (rbCustomer.isSelected()) {
+                        Person.Customer cus = (Person.Customer) persons.get(n - 1);
+                        taPersons.append("Name: " + persons.get(n - 1).getName() + "\n");
+                        taPersons.append("Age: " + persons.get(n - 1).getAge() + "\n");
+                    }
+                    else if (rbClerk.isSelected()) {
+                        Person.Employee.Clerk c = (Person.Employee.Clerk) persons.get(n - 1);
+                        taPersons.append("Name: " + persons.get(n - 1).getName() + "\n");
+                        taPersons.append("Age: " + persons.get(n - 1).getAge() + "\n");
+                        taPersons.append("Months Worked: " + persons.get(n - 1).getMonths() + "\n");
+                        taPersons.append("Salary: " + persons.get(n - 1).getSalary() + "\n");
+                    }
+                    else if (rbManager.isSelected()) {
+                        Person.Employee.Manager m = (Person.Employee.Manager) persons.get(n - 1);
+                        taPersons.append("Name: " + persons.get(n - 1).getName() + "\n");
+                        taPersons.append("Age: " + persons.get(n - 1).getAge() + "\n");
+                        taPersons.append("Months Worked: " + persons.get(n - 1).getMonths() + "\n");
+                        taPersons.append("Salary: " + persons.get(n - 1).getSalary() + "\n");
+                    }
+                } catch (ClassCastException c) {
+                    JOptionPane.showMessageDialog(null, "Something went wrong.");
+                } catch (NumberFormatException n) {
+                    JOptionPane.showMessageDialog(null, "Input Invalid.");
+                } catch (IndexOutOfBoundsException i) {
+                    JOptionPane.showMessageDialog(null, "Data does not exist.");
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
